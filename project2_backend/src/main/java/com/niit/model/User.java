@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    private String id;
 	@Column(unique=true,nullable=false)
 	private String username;
 	private String password;
@@ -25,10 +25,10 @@ public class User {
 	private boolean enabled;
 	@Column(name="on_line")
 	private boolean online;
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getUsername() {
