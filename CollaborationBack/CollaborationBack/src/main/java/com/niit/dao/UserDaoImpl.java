@@ -1,5 +1,7 @@
 package com.niit.dao;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -44,6 +46,12 @@ public class UserDaoImpl implements UserDao {
 		User user=(User)session.get(User.class, id);
 		session.close();
 		return user;
+	}
+
+	@Override
+	public List<String> getOnlineUsers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

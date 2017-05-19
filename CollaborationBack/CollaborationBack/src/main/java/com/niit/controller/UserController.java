@@ -38,7 +38,7 @@ public class UserController {
 		}
 
 	}
-	@RequestMapping(value="/login/",method=RequestMethod.POST)
+	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ResponseEntity<?> login(@RequestBody User user,HttpSession session){
 		
 		User validUser=userDao.login(user);
