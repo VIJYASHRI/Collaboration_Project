@@ -2,6 +2,7 @@ package com.niit.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -42,14 +43,11 @@ public class FriendDaoImpl implements FriendDao {
 
 	public List<Friend> pendingRequests(String toUsername) {
 		Session session=sessionFactory.openSession();
-		Friend friend =new Friend();
-		friend.setFrom("from");
-		friend.setTo("to");
-		friend.setStatus('P');
-		session.save(friend);
-		session.flush();
+		Query query=session.createQuery("from Friend where to=? and from=?");
+		query.setString(0,toUsername);
+		query.setCharacter(1,'P');
+		List<Friend> pendingRequests=query.list();
 		session.close();
-		return null; //null => pendingRequest
-	}
-
+		return pendingRequests;
+}
 }

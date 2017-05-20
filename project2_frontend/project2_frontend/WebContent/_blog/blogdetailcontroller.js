@@ -10,4 +10,13 @@ app.controller('BlogDetailController',function($routeParams,$scope,BlogService){
 	},function(response){
 	console.log(response.status)
 	})
+	$scope.addBlogComment=function(){
+		$scope.blogComment.blogPost=$scope.blogPost;   //blogComment.setBlogPost(blogPost)
+	BlogService.addblogComment($scope.blogComment)
+	.then(function(response){
+		console.log(response.status);
+	},function(response){
+	console.log(response.status)
+	})
+	}
 })

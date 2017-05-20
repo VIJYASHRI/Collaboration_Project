@@ -5,17 +5,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="row">
+<div>
+<div class="panel panel-default"></div>
+<div class="panel-heading"></div>
+<div>{{blogpost.title}}</div>
+<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
+<span><strong>On:</strong>{{blogPost.createdOn |date:'medium'}}</span>
+</div>
+<div>
+<div class="panel-body"></div>
+{{blogPost.body}}
+</div>
+</div>
 <form>
-<table>
-<tr>
-<td>{{blogpost.title}}</td>
+<textarea ng-model="blogComent.body"></textarea>
+<button ng-click="addBlogcomment()" class="btn btn-primary btn-block">Post Comment</button>
 
-<td><strong>By:{{blogPost.createdBy.username}}</strong></td>
-<td><strong>On:{{blogPost.createdOn |date:'medium'}}</strong></td>
-
-
-<td>{{blogPost.body}}</td></tr>
-</table>
 </form>
 </body>
 </html>

@@ -39,6 +39,18 @@ public class BlogPost {
 	@JsonIgnore
 	private List<BlogComment> blogComments=new ArrayList<BlogComment>();
 
+	public boolean isApproved() {
+		return approved;
+	}
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+	public List<BlogComment> getBlogComments() {
+		return blogComments;
+	}
+	public void setBlogComments(List<BlogComment> blogComments) {
+		this.blogComments = blogComments;
+	}
 	public int getId() {
 		return id;
 	}
@@ -69,5 +81,7 @@ public class BlogPost {
 	public void setBody(String body) {
 		this.body = body;
 	}
+	
+	
 
 }

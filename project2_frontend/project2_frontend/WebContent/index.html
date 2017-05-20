@@ -27,22 +27,30 @@
        <ul class="nav navbar-nav ">
 					<li><a href="#home"><i class="fa fa-home"></i> Home</a></li>
 					<li><a href=""><i class="fa fa-shield"></i> About Us</a></li>
-					<li><a href="#register" ng-hide="currentUser.username">Register</a></li>
-					<li><a href="#login" ng-hide="currentUser.username">login</a></li>
-					<li><a href="#profilepic" ng-show="currentuser.username"><img src="http://localhost:9090/project2_backend/getimage/{{currentUser.username}}" alt="upload Picture" width="30px" height="30px" class="img-rounded">Upload Profile Pic</a></li>
-					<li><a href="" ng-show="currentuser.username">Welcome {{currentUser.username}}</a>
-					<li ng-show="currentUser.username"><a href="#profilepic"><span
-							class="profile-img"> <img src="http://localhost:8080/CollaborationBack/getimage/{{currentUser.username}}" alt="upload Picture"
-								width="30px" height="30px" class="img-rounded"></span></a></li>
- 
- 						
- 					<li><a href="#edituser" ng-show="currentUser.username"><span class="glyphicon glyphicon-user"></span>Edit Profile</a></li>
 					<li><a href="#getAllJobs" ng-show="currentUser.username">Get All Jobs</a></li>
  					<li><a href="#addJob" ng-show="currentUser.role=='Admin'">Post new job</a></li>
-
- 					<li><a href="#addPost" ng-show="currentUser.username">Add Blog Post </a></li>
- 					<li><a href="" ng-click="logout()" ng-show="currentUser.username">logout</a></li>
-
+					<li><a href="#addPost" ng-show="currentUser.username">Add Blog Post </a></li>
+					
+					<ul class="nav navbar-nav pull-right">
+					<li><a href="#register" ng-hide="currentUser.username">
+					<span class="glyphicon glyphicon-user-add"></span>Register</a></li>
+					<li><a href="#login" ng-hide="currentUser.username">
+					<span class="glyphicon glyphicon-user"></span>login</a></li>
+					</ul>
+					
+					<li><a href="#profilepic" ng-show="currentUser.username"><img src="http://localhost:8080/CollaborationBack/{{currentUser.username}}" alt="upload Picture" width="30px" height="30px" class="img-rounded">Upload Profile Pic</a></li>
+					<li><a href="" ng-show="currentUser.username"><strong>Welcome {{currentUser.username}}</strong></a>
+					
+					<!-- <li ng-show="currentUser.username"><a href="#profilepic"><span
+							class="profile-img"> <img src="http://localhost:8080/CollaborationBack/getimage/{{currentUser.username}}" alt="upload Picture"
+								width="30px" height="30px" class="img-rounded"></span></a></li> -->
+ 
+ 						
+ 					<li><a href="#edituser" ng-show="currentUser.username"><span class="glyphicon glyphicon-edit"></span>Edit Profile</a></li>
+					
+ 					<li><a href="" ng-click="logout()" ng-show="currentUser.username">
+ 					<span class="glyphicon glyphicon-log-out"></span>logout</a></li>
+						
 					</ul>
 					</div>
 								

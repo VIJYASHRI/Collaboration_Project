@@ -20,7 +20,7 @@ app.config(function($routeProvider){
 		templateUrl:'_user/edituserform.html',
 		controller:'EditController'
 	})
-	.when('/addjob',{
+	.when('/addJob',{
 		templateUrl:'_job/jobform.html',
     	controller:'JobController'
     })

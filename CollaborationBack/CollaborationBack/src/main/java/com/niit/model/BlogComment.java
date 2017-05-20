@@ -18,14 +18,19 @@ public class BlogComment {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	
 	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private User commentedBy;
+	
 	private Date commentedOn;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="blogPost_id")
 	private BlogPost blogPost;
+	
 	private String body;
+	
 	public int getId() {
 		return id;
 	}

@@ -1,4 +1,4 @@
-package com.niit.configuration;
+/*package com.niit.configuration;
 
 import java.util.List;
 
@@ -78,3 +78,4 @@ public class WebSocketconfiguration implements WebSocketMessageBrokerConfigurer 
 }
 
 
+*/

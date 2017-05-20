@@ -1,4 +1,4 @@
-package com.niit.controller;
+/*package com.niit.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,3 +96,4 @@ public class SockController {
 }
 
 
+*/
