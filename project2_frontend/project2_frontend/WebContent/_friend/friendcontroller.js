@@ -17,7 +17,14 @@ app.controller('FriendController',function($scope,$location,FriendService){
 		console.log(response.status)
 	})
 	
-	
+	$scope.updatependingrequest=function(from, status){
+		FriendService.updatependingrequest(from, status)
+		.then(function(reponse){
+			$location.path('/pendingRequests')
+		},function(response){
+			console.log(response.status)
+		})
+	}
 	
 	function getAllUsers(){
 		$scope.usersList=FriendService.getAllUsers()

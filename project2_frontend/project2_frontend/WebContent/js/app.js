@@ -32,10 +32,33 @@ app.config(function($routeProvider){
     	templateUrl:'_blog/bloglist.html',
     	controller:'BlogController'
     })
+    .when('/getBlogForApproval',{
+    	templateUrl:'_blog/getBlogForApproval.html',
+    	controller:'BlogDetailController'
+    })
     .when('/getBlogDetail/:id',{
     	templateUrl:'_blog/getblogdetail.html',
     	controller:'BlogDetailController'
     })
+    .when('/getAllUsers',{
+		templateUrl:'_friend/userslist.html',
+    	controller:'FriendController'
+    	
+    }).when('/pendingRequests',{
+		templateUrl:'_friend/pendingRequest.html',
+    	controller:'FriendController'
+    })
+    
+    .when('/listoffriends',{
+		templateUrl:'_friend/friendlist.html',
+		controller:'FriendController'
+	})
+    .when('/chat',{
+		templateUrl:'_chat/chat.html',
+		controller:'ChatController'
+	})
+	
+	
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){
 	console.log('entering run method ')

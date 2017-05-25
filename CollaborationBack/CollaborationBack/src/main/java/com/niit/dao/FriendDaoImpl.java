@@ -17,8 +17,8 @@ public class FriendDaoImpl implements FriendDao {
 	public SessionFactory sessionFactory;
 	public List<User> getSuggestedUsers(User user) {
 		Session session=sessionFactory.openSession();
-		SQLQuery query=session.createSQLQuery("select * from user_batch15 where username in (select username from user_batch15 where username!=? minus (select from_id from friend_batch15 where to_id=?"
-				+ "union select to_id from friend_batch15 where from_id=?"
+		SQLQuery query=session.createSQLQuery("select * from USER_DTBATCH15 where username in (select username from USER_DTBATCH15 where username!=? minus (select from_id from friend where to_id=?"
+				+ "union select to_id from FRIEND where from_id=?"
 				+ "))");
 		query.setString(0, user.getUsername());
 		query.setString(1, user.getUsername());
@@ -50,4 +50,29 @@ public class FriendDaoImpl implements FriendDao {
 		session.close();
 		return pendingRequests;
 }
+
+	@Override
+	public void updatependingrequest(String from, String username, char status) {
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("Update Friend set Status=? where from=? and to=?");
+		query.setCharacter(0, status);
+		query.setString(1, from);
+		query.setString(2,username);
+		int count=query.executeUpdate();
+		System.out.println("Number of records updated" + count);
+		session.close();
+		session.flush();
+		
+	}
+public List<Friend> listOfFriends(String username) {
+	Session session=sessionFactory.openSession();
+	Query query=session.createQuery("");
+	query.setString(0, username);
+	query.setString(1, username);
+	List<Friend> friends=query.list();
+	session.close();
+	session.flush();
+	return null;
+}
+	
 }

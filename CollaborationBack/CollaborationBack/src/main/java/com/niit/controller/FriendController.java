@@ -57,6 +57,18 @@ User user=(User)session.getAttribute("user");
 		return new ResponseEntity<List<Friend>>(pendingRequests,HttpStatus.OK);
 		
 }	
+	@RequestMapping(value="/updatependingrequest/{from}/status", method=RequestMethod.POST)
+	public ResponseEntity<?> updatependingrequest(@PathVariable String from , @PathVariable char status, HttpSession session){
+User user=(User)session.getAttribute("user");
+		
+		if(user==null){
+			Error error=new Error(1,"Unauthroized user");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+		}
+friendDao.updatependingrequest(from, user.getUsername(), status);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+		
+	}
 }
 
 
