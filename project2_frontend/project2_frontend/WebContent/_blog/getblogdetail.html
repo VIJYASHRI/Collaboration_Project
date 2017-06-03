@@ -4,29 +4,27 @@
 <meta charset="ISO-8859-1">
 <title>Blog</title>
 </head>
-<body>
+<body ng-model="blogPost">
 <div class="row">
 <div>
 <div class="panel panel-default">
 <div class="panel-heading">
-<div>{{blogpost.title}}</div>
+<div>{{blogPost.title}}</div>
 <span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
 <span><strong>On:</strong>{{blogPost.createdOn |date:'medium'}}</span>
 </div>
-	
-	<div>
 		<div class="panel-body">
-			{{blogPost.body}}
-		</div>
-	</div>
+		{{blogPost.body}}</div>
 </div>
 </div>
 </div>
 <div ng-show="currentUser.role=='Admin'">
 <input type="radio" ng-model="blogPost.approved" value="true">Approve<br>
 <input type="radio" ng-model="blogPost.approved" value="false">Deny<br>
+<button type="submit" class="btn btn-success" ng-click="UpdateApproval()">Update</button><br>
+<a href="getAllBlogs">Back</a>
 </div>
-<div class=row ng-hide="currentUser.role=='Admin'">
+<div class=row >
 <a href="" ng-click="getBlogComments(blogPost.id)" class="btn btn-default">Show Comments</a>
 <ul ng-show="showcomments">
 <li ng-repeat="comment in blogComments" style="list-style:none;">
@@ -45,6 +43,6 @@
 <button ng-click="addBlogcomment()" class="btn btn-primary btn-block">Post Comment</button>
 
 </form>
-</div>
+</div> 
 </body>
 </html>

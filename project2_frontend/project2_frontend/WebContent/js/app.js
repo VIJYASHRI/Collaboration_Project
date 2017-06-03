@@ -18,22 +18,26 @@ app.config(function($routeProvider){
 	})
 	.when('/edituser',{
 		templateUrl:'_user/edituserform.html',
-		controller:'EditController'
+		controller:'UserController'
 	})
 	.when('/addJob',{
 		templateUrl:'_job/jobform.html',
     	controller:'JobController'
     })
     .when('/getAllJobs',{
-    	templateUrl:'_job/getjobtitles.html',
+    	templateUrl:'_job/jobtitles.html',
     	controller:'JobController'
     })
-    .when('/getAllBlogs',{
-    	templateUrl:'_blog/bloglist.html',
+    .when('/saveBlogPost',{
+    	templateUrl:'_blog/blogform.html',
     	controller:'BlogController'
     })
-    .when('/getBlogForApproval',{
-    	templateUrl:'_blog/getBlogForApproval.html',
+    .when('/getAllBlogs',{
+    	templateUrl:'_blog/getBlogTitles.html',
+    	controller:'BlogController'
+    })
+    .when('/list/:approved',{
+    	templateUrl:'_blog/blogsforapproval.html',
     	controller:'BlogDetailController'
     })
     .when('/getBlogDetail/:id',{

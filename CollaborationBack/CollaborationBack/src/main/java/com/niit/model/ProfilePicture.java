@@ -6,7 +6,7 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="profilePic_DTbatch15")
+@Table(name="ProfilePic")
 public class ProfilePicture {
 	@Id
 	private String username;

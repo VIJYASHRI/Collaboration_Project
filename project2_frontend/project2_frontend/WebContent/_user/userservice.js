@@ -16,8 +16,8 @@ app.factory('UserService',function($http){
 		return $http.get(BASE_URL + "/getuser");
 	}
 	
-	userService.updateUesr=function(){
-		return $http.put(BASE_URL + "updateuser")
+	userService.updateUesr=function(user){
+		return $http.put(BASE_URL + "/updateuser", user)
 	}
 	return userService;
 })

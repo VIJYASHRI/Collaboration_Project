@@ -4,15 +4,18 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-Search by Title:
+<body >
+
+<!-- Search by Title:
 <input type="text" ng-model="search.title">
 Created by Author:
-<input type="text" ng-model="search.createdBy.username">
+<input type="text" ng-model="search.createdBy.username"> -->
+
+
 <table class="table">
 <tr><th>Recent Posts</th></tr>
 <tr ng-repeat="blogPost in blogPosts | orderBy:time:true | filter:search">
-<td>{{blogPost.title}}</td>
+<td><a href="getBlogDetail/{{blogPost.id}}">{{blogPost.title}}</a></td>
 <td>Created By:{{blogPost.createdBy.username}}</td>
 <td>Created On:{{blogPost.createdOn| date:'MM/DD/YYYY HH:mm'}}</td>
 </tr>

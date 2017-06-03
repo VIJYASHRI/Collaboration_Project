@@ -50,8 +50,11 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<String> getOnlineUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("select username from User where online=1");
+		List<String> onlineUsers=query.list();
+		session.close();
+		return onlineUsers;
 	}
 
 }

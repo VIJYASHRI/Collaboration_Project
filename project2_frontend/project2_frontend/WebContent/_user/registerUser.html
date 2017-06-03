@@ -3,14 +3,100 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+ <script data-require="angular.js@*" data-semver="1.2.13" src="http://code.angularjs.org/1.2.13/angular.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
 </head>
+
+<style>
+/* body {
+	 background-color:rgba(0,0,0,0.5);
+   
+    background-image: url("resources/images/cakes/img/1bg.jpg");
+    background-size: cover;
+} */
+
+.form_bg {
+    
+   
+    
+    color:#666;
+    padding:20px;
+    border-radius:10px;
+    position: relative;
+    border:1px solid #fff;
+    margin:40;
+    top: 30;
+    bottom:40;
+    right:100;
+    left:100;
+    width: 620px;
+    height: 300px;
+}
+.align-center {
+    
+color: white;
+font-weight: bold;
+    text-align:center;
+}
+</style>
 <body>
+{{message}}
+<div class="container">
+<div class="row">
+        <div class="form_bg">
+        <form action="" method="POST">
+                 <h2 class="text-center">Register</h2>
+                 
+                <br/>
+                <div class="form-group">
+                    <input type="text" name="username" ng-model="user.username" class="form-control"  placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="firstname" ng-model="user.firstname" class="form-control"  placeholder="firstname">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="lastname" ng-model="user.lastname" class="form-control"  placeholder="lastname">
+                </div>
+                 <div class="form-group">
+                    <input type="text" name="email" ng-model="user.email" class="form-control"  placeholder="email">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" ng-model="user.password" class="form-control"  placeholder="Password">
+                
+                    </div>
+                   <div class="form-group">
+                   <strong>Select Role</strong><br>
+                    <input type="radio" ng-model="user.role" value="Student">Student
+					<input type="radio" ng-model="user.role" value="Alumini">Alumini
+					<input type="radio" ng-model="user.role" value="Employee">Employee 
+                   </div> 
+                    
+                   <div class="align-center">
+                <center><button type="submit" class="btn btn-success" ng-click="registerUser()">Register</button></center>
+                    </div>
+        </form>
+        </div>
+        </div>
+<!-- <style>
+ bg{
+     background-image:"pr0ject2_frontend/../image/wlp_fdbk.jpg"(img ng-src="{{image}}");
+     background-image-size:"cover"
+    }
+</style> 
+
+<div class="modalContainer" 
+  ng-style="{'background-image': 'project2_frontend/../image/wlp_fdbk.jpg(' + selectedMeal.url + ')'}"> 
+  
+
 {{message}}
 <form>
 <table>
+
 <tr><td>Enter Username</td><td><input type="text" ng-model="user.username"></td></tr>
 <tr><td>Enter Password</td><td><input type="password" ng-model="user.password"></td></tr>
 <tr><td>Enter Email</td><td><input type="text" ng-model="user.email"></td></tr>
+
 <tr><td>Select Role</td><td><input type="radio" ng-model="user.role" value="Student">Student
 <input type="radio" ng-model="user.role" value="Alumini">Alumini
 <input type="radio" ng-model="user.role" value="Employee">Employee
@@ -19,5 +105,6 @@
 <tr><td><input type="submit" ng-click="registerUser()" ></td><td></td></tr>
 </table>
 </form>
+ --></div>
 </body>
 </html>

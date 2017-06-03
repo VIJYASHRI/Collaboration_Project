@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name = "user_DTbatch15")
+@Table
 @Component
 public class User {
 	@Id
@@ -25,6 +25,27 @@ public class User {
 	private boolean enabled;
 	@Column(name="on_line")
 	private boolean online;
+	private String firstname;
+	
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	private String lastname;
+
+	
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
 	public int getId() {
 		return id;

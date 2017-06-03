@@ -1,8 +1,11 @@
 package com.niit.configuration;
 
+import java.io.IOException;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -24,5 +27,10 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		viewResolver.setSuffix(".jsp");
 		registry.viewResolver(viewResolver);
 	}
-
+	@Bean(name="multipartResolver")
+	public CommonsMultipartResolver getResolver() throws IOException{
+		CommonsMultipartResolver resolver= new CommonsMultipartResolver();
+		resolver.setMaxUploadSizePerFile(5242880);
+		return resolver;
+	}
 }

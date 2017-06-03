@@ -1,4 +1,4 @@
-app.controller('editcontroller',function($scope,UserService,$location,$rootScope){
+app.controller('Editcontroller',function($scope,UserService,$location,$rootScope){
 	$scope.User=UserService.getUser()
 		.then(function(response){
 			$scope.user=response.data
@@ -15,7 +15,7 @@ app.controller('editcontroller',function($scope,UserService,$location,$rootScope
 			$location.path('/home')
 	},function(response){
 		console.log(response.status)
-		$location.path('/edituserform')
+		$location.path('/edituser')
 	})
 	}	
 })

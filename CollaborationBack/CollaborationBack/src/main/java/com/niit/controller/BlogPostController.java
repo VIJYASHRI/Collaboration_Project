@@ -30,8 +30,8 @@ public class BlogPostController {
 	@RequestMapping(value = "/saveBlogPost", method = RequestMethod.POST)
 	public ResponseEntity<?> saveBlogPost(@RequestBody BlogPost blogPost, HttpSession session) {
 
-		User user = (User) session.getAttribute("user");
-		if (user == null) {
+		User user=(User)session.getAttribute("user");
+		if (user==null) {
 			Error error = new Error(3, "Unauthorized user");
 			return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);
 		} else {
@@ -43,7 +43,7 @@ public class BlogPostController {
 
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "/list/{approved}")
-	public ResponseEntity<?> getBlogList(@PathVariable int approved,HttpSession session){
+	public ResponseEntity<?> getAllBlogs(@PathVariable int approved,HttpSession session){
 		User user=(User)session.getAttribute("user");
 		if(user==null){
 			Error error=new Error(1,"Unauthroized user");
@@ -52,6 +52,7 @@ public class BlogPostController {
 		List<BlogPost> blogPosts=blogDao.getBlogPosts(approved);
 		return new ResponseEntity<List<BlogPost>>(blogPosts,HttpStatus.OK);
 	}
+	
 	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getBlogPost(@PathVariable(value="id") int id,
 			HttpSession session){
@@ -64,6 +65,7 @@ public class BlogPostController {
 		BlogPost blogPost=blogDao.getBlogPostById(id);
 		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 	}
+	
 	@RequestMapping(value="/addComment",method=RequestMethod.POST)
 	public ResponseEntity<?> addBlogComment(@RequestBody BlogComment blogComment,HttpSession session){
 		User user=(User)session.getAttribute("user");

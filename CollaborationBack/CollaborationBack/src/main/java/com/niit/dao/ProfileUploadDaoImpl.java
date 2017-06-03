@@ -11,7 +11,6 @@ import com.niit.model.ProfilePicture;
 public class ProfileUploadDaoImpl implements ProfileUploadDao {
 	@Autowired
 	private SessionFactory sessionfactory;
-
 	public void save(ProfilePicture profilePicture) {
 		Session session = sessionfactory.openSession();
 		session.saveOrUpdate(profilePicture);
@@ -22,7 +21,8 @@ public class ProfileUploadDaoImpl implements ProfileUploadDao {
 
 	public ProfilePicture getProfilePic(String username) {
 		Session session = sessionfactory.openSession();
-		ProfilePicture profilePic = (ProfilePicture) session.get(ProfilePicture.class, username);
+		ProfilePicture profilePic = (ProfilePicture) 
+				session.get(ProfilePicture.class, username);
 		session.close();
 		return profilePic;
 	}

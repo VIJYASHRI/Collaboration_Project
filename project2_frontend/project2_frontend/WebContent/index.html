@@ -8,7 +8,12 @@
 
 </head>
 
+<!-- 
+<div class="modalContainer" 
+  ng-style="{'background-image': 'url(' + selectedMeal.url + ')'}"> -->
+
 <body ng-app="app">
+ 
 	<header>
 		<nav class="navbar navbar-inverse">
 
@@ -33,8 +38,8 @@
 							class="caret"></b>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="#/getAllJobs">view Job</a></li>
-							<li><a href="#addJob" ng-show="currentUser.role=='Admin'">Post Job</a></li>
+							<li><a href="#getAllJobs" ng-show="currentUser.username">view Job</a></li>
+							<li><a href="#addJob" ng-show="currentUser.role=='admin'">Post Job</a></li>
 						</ul></li>
 
 
@@ -43,9 +48,10 @@
 							class="caret"></b>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="#blogform" ng-show="currentUser.username">Add Blog Post </a></li>
-							<li><a href="#getblogdetail" >Blog Detail</a></li>
-							<li><a href="#blogform" ng-show="currentUser.role=='Admin'">Edit Blog </a></li>
+							<li><a href="#saveBlogPost" ng-show="currentUser.username">Add Blog Post </a></li>
+							<li><a href="#getBlogDetail" >Blog Detail</a></li>
+							<li><a href="#list" >Blog Pending</a></li>
+							
 						</ul></li>
 
 
@@ -61,12 +67,10 @@
 					</a></li>
 
 
-					<li><a href="#profilepic" ng-show="currentUser.username"><img
-							src="http://localhost:8080/CollaborationBack/{{currentUser.username}}"
-							alt="upload Picture" width="30px" height="30px"
-							class="img-rounded">Upload Profile Pic</a></li>
+					<li><a href="#profilepic" ng-show="currentUser.username"><img src="http://localhost:8080/CollaborationBack/{{currentUser.username}}" alt="upload Picture" width="30px" height="30px" class="img-rounded">Upload Profile Pic</a></li>
 					<li><a href="" ng-show="currentUser.username"><strong>Welcome
-								{{currentUser.username}}</strong></a> <!-- <li ng-show="currentUser.username"><a href="#profilepic"><span
+								{{currentUser.username}}</strong></a> 
+								<!-- <li ng-show="currentUser.username"><a href="#profilepic"><span
 							class="profile-img"> <img src="http://localhost:8080/CollaborationBack/getimage/{{currentUser.username}}" alt="upload Picture"
 								width="30px" height="30px" class="img-rounded"></span></a></li> -->
 								
@@ -76,7 +80,8 @@
 					</a>
 						<ul class="dropdown-menu">
 							<li><a href="#/getAllUsers">All Users</a></li>
-							<li><a href="#pendingRequest" >Pending Requests</a></li>
+							<li><a href="#pendingRequests" >Pending Requests</a></li>
+							<li><a href="#/friendslist" >My Friends</a></li>
 						</ul></li>					
 					
 								
@@ -148,5 +153,5 @@
 
 <script type="text/javascript" src="_friend/friendControler.js"></script>
 <script type="text/javascript" src="_friend/friendservice.js"></script>
-
+<script src="src/js/angular-background.js"></script>
 </html>
