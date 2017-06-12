@@ -1,5 +1,5 @@
-app.controller('Editcontroller',function($scope,UserService,$location,$rootScope){
-	$scope.User=UserService.getUser()
+app.controller('EditController',function($scope,UserService,$location,$rootScope){
+	$scope.user=UserService.getUser()
 		.then(function(response){
 			$scope.user=response.data
 			console.log(response.data);

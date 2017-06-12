@@ -7,10 +7,14 @@ app.config(function($routeProvider){
 	})
 	.when('/login',{
 		templateUrl:'_user/login.html',
-		controller:'UserController'
+		controller:'UserController',
+		
 	})
 	.when('/home',{
 		templateUrl:'_home/home.html'
+	})
+	.when('/aboutUs',{
+		templateUrl:'_home/aboutUs.html'
 	})
 	.when('/profilepic',{
 		templateUrl:'_user/profilepic.html',
@@ -18,7 +22,7 @@ app.config(function($routeProvider){
 	})
 	.when('/edituser',{
 		templateUrl:'_user/edituserform.html',
-		controller:'UserController'
+		controller:'EditController'
 	})
 	.when('/addJob',{
 		templateUrl:'_job/jobform.html',
@@ -54,12 +58,12 @@ app.config(function($routeProvider){
     })
     
     .when('/listoffriends',{
-		templateUrl:'_friend/friendlist.html',
+		templateUrl:'_friend/friendslist.html',
 		controller:'FriendController'
 	})
     .when('/chat',{
 		templateUrl:'_chat/chat.html',
-		controller:'ChatController'
+		controller:'ChatCtrl'
 	})
 	
 	

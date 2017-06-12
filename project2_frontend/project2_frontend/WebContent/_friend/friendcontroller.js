@@ -2,7 +2,7 @@ app.controller('FriendController',function($scope,$location,FriendService){
 	$scope.friendRequest=function(username){
 		FriendService.sendFriendRequest(username)
 		.then(function(response){
-			alert("Friend request has been sent to " + username)
+			alert("Friend request has been sent to "+username)
 			getAllUsers();
 			$location.path("/getAllUsers")
 		},function(response){
@@ -17,14 +17,27 @@ app.controller('FriendController',function($scope,$location,FriendService){
 		console.log(response.status)
 	})
 	
-	$scope.updatependingrequest=function(from, status){
-		FriendService.updatependingrequest(from, status)
-		.then(function(reponse){
+	
+	$scope.updatependingrequest=function(from,status){
+		FriendService.updatependingrequest(from,status)
+		.then(function(response){
+			if(status=='A')
+			alert('You have accepted the friend request')
+			else
+				alert('You have denied the friend request')
 			$location.path('/pendingRequests')
 		},function(response){
 			console.log(response.status)
 		})
 	}
+	
+	$scope.friendslist=FriendService.getAllFriends()
+	.then(function(response){
+		$scope.friendslist=response.data
+	},function(response){
+		console.log(response.status)
+	})
+	
 	
 	function getAllUsers(){
 		$scope.usersList=FriendService.getAllUsers()
