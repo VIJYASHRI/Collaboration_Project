@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body >
+<div class="container" ng-model="username">
+<div class="row" >
+<div class="panel panel-default">
+<div class="panel-heading">
+<div>{{blogPost.title}}</div>
+<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
+<span><strong>On:</strong>{{blogPost.createdOn |date:'medium'}}</span>
+</div>
+	
+	<div>
+		<div class="panel-body">
+			{{blog.body}}
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<div ng-show="currentUser.role=='admin'">
+<input type="radio" ng-model="blogPost.approved" value="true">Approve<br>
+<input type="radio" ng-model="blogPost.approved" value="false">Deny<br>
+<button type="submit" class="btn btn-success" ng-click="Update()">Update</button><br>
+</div>
+</div>
+</body>
+</html>

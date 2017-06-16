@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Blog</title>
+</head>
+<body ng-model="blogPost">
+<div class="row">
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<div>{{blogPost.title}}</div>
+<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
+<span><strong>On:</strong>{{blogPost.createdOn |date:'medium'}}</span>
+</div>
+		<div class="panel-body">
+		{{blogPost.body}}</div>
+</div>
+</div>
+</div>
+<div ng-show="currentUser.role=='Admin'">
+<input type="radio" ng-model="blogPost.approved" value="true">Approve<br>
+<input type="radio" ng-model="blogPost.approved" value="false">Deny<br>
+<button type="submit" class="btn btn-success" ng-click="UpdateApproval()">Update</button><br>
+<a href="getAllBlogs">Back</a>
+</div>
+<div class=row >
+<a href="" ng-click="getBlogComments(blogPost.id)" class="btn btn-default">Show Comments</a>
+<ul ng-show="showcomments">
+<li ng-repeat="comment in blogComments" style="list-style:none;">
+<div class="container" ng-model="username">
+{{comment.body}}
+<span><strong>Commented By:</strong>{{comment.commentedBy.username}}</span>
+<span><strong>On:</strong>{{comment.commentedOn |date:'medium'}}</span>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-sm-3 col-md-3 col-lg-2">
+
+<form>
+<textarea ng-model="blogComent.body"></textarea>
+<button ng-click="addBlogcomment()" class="btn btn-primary btn-block">Post Comment</button>
+
+</form>
+</div> 
+</body>
+</html>

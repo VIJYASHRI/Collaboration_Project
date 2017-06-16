@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body style="color:#FF0000";>
+<form >
+
+<table>
+<tr>
+<td>Username</td>
+<td><input type="text" ng-model="user.username" ></td>
+</tr>
+<tr>
+<td>firstname</td>
+<td><input type="text" ng-model="user.firstname" ></td>
+</tr>
+<tr>
+<td>lastname</td>
+<td><input type="text" ng-model="user.lastname" ></td>
+</tr>
+<tr>
+<td>email</td>
+<td><input type="text" ng-model="user.email" ></td>
+</tr>
+<tr>
+<td>role</td>
+<td><input type="radio" ng-model="user.role" value="STUDENT">Student
+<input type="radio" ng-model="user.role" value="EMPLOYEE">Employee
+<input type="radio" ng-model="user.role" value="ALUMINI">Alumini
+</tr>
+<tr>
+<td><input type="submit" ng-click="updateUser()" value="Edit"></td>
+</tr>
+</table>
+
+</form>
+</body>
+</html>

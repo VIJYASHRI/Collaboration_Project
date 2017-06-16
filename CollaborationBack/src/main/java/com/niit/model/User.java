@@ -10,21 +10,42 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name = "user_DTbatch15")
+@Table
 @Component
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(unique = true, nullable = false)
+	@Column(unique=true, nullable=false)
 	private String username;
 	private String password;
-	@Column(unique = true, nullable = false)
+	@Column(unique=true, nullable=false)
 	private String email;
 	private String role;
 	private boolean enabled;
-	@Column(name = "on_line")
+	@Column(name="on_line")
 	private boolean online;
+	private String firstname;
+	private String lastname;
+
+	
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
 
 	public int getId() {
 		return id;

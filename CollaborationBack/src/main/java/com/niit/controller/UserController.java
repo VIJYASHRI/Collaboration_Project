@@ -1,6 +1,7 @@
 package com.niit.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.dao.UserDao;
@@ -37,8 +39,8 @@ public class UserController {
 		}
 
 	}
-	@RequestMapping(value="/login/",method=RequestMethod.POST)
-	public ResponseEntity<?> login(@RequestBody User user,HttpSession session){
+	@RequestMapping(value="/login",method=RequestMethod.POST , produces= "application/json" )
+	public ResponseEntity<?> login(@RequestBody @Valid User user,HttpSession session){
 		
 		User validUser=userDao.login(user);
 		if(validUser==null){                        
@@ -51,10 +53,10 @@ public class UserController {
 			userDao.updateUser(validUser);
 /*OR      session.setAttribute("user", validUser);
 			validUser.setOnline(true);*/
+			session.setAttribute("user", validUser);
 			return new ResponseEntity<User>(validUser,HttpStatus.OK);
 			}
 		}
-	
 	@RequestMapping(value="/logout",method=RequestMethod.PUT)
 	public ResponseEntity<?> logout(HttpSession session){
 		User user=(User)session.getAttribute("user");
@@ -72,9 +74,9 @@ public class UserController {
 		}
 	}
 	@RequestMapping(value="/getuser",method=RequestMethod.GET)
-	public ResponseEntity<?> getUser(HttpSession session){
+	public ResponseEntity<?> getUser(User user, HttpSession session){
 		//ONLY FOR AUTHENTICATION
-	          User user=(User)session.getAttribute("user");
+	           user=(User)session.getAttribute("user");
 	          if(user==null){
 	        	 Error error=new Error(3,"Unauthorized user..");
 	        	 return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);

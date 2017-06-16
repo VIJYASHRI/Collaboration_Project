@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +26,7 @@ public class JobController {
 	
 	
 	@RequestMapping(value="/saveJob", method=RequestMethod.POST)
-	public ResponseEntity<?> saveJob(Job job, HttpSession session) {
+	public ResponseEntity<?> saveJob(@RequestBody Job job, HttpSession session) {
 		User user = (User) session.getAttribute("user");
 
 		if (user == null) {
@@ -40,7 +41,7 @@ public class JobController {
 				job.setPostedOn(new Date());
 				job.setActive(true);
 				jobDao.saveJobDetails(job);
-				return new ResponseEntity<Void>(HttpStatus.OK);
+				return new ResponseEntity<Job>(job,HttpStatus.OK);
 			}
 
 			else {
@@ -64,7 +65,12 @@ public class JobController {
 
 	@RequestMapping(value = "/getJob/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getJobById(@PathVariable int id, HttpSession session) {
-		Job job = jobDao.getJobById(id);
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			Error error = new Error(3, "Unauthorised user");
+			return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);
+		}
+			Job job = jobDao.getJobById(id);
 		return new ResponseEntity<Job>(job, HttpStatus.OK);
 	}
 }

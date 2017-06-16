@@ -10,11 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="job_collaboration")
+@Table(name = "job_collaboration")
 public class Job {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 	private String jobTitle;
 	private String jobDescription;
 	private String location;
@@ -22,8 +22,8 @@ private int id;
 	private String company;
 	private Date postedOn;
 	private String skillsRequired;
-	
-	@Column(name="is_active")
+
+	@Column(name = "is_active")
 	private boolean active;
 
 	public int getId() {
@@ -97,5 +97,5 @@ private int id;
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-		
+
 }

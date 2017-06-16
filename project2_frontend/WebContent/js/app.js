@@ -1,4 +1,4 @@
-var app=angular.module("app",['ngRoute'])
+var app=angular.module("app",['ngRoute','ngCookies'])
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/register',{
@@ -7,26 +7,65 @@ app.config(function($routeProvider){
 	})
 	.when('/login',{
 		templateUrl:'_user/login.html',
-		controller:'UserController'
+		controller:'UserController',
+		
 	})
 	.when('/home',{
 		templateUrl:'_home/home.html'
 	})
+	.when('/aboutUs',{
+		templateUrl:'_home/aboutUs.html'
+	})
 	.when('/profilepic',{
-		templateUrl:'_user/profilepic.html'
+		templateUrl:'_user/profilepic.html',
 	})
 	.when('/edituser',{
-		templateUrl:'_user/edituserform',
+		templateUrl:'_user/edituserform.html',
 		controller:'EditController'
 	})
-	.when('/addjob',{
+	.when('/addJob',{
 		templateUrl:'_job/jobform.html',
     	controller:'JobController'
     })
     .when('/getAllJobs',{
-    	templateUrl:'_job/getjobtitles.html',
+    	templateUrl:'_job/jobtitles.html',
     	controller:'JobController'
     })
+    .when('/saveBlogPost',{
+    	templateUrl:'_blog/blogform.html',
+    	controller:'BlogController'
+    })
+    .when('/getAllBlogs',{
+    	templateUrl:'_blog/bloglist.html',
+    	controller:'BlogController'
+    })
+    .when('/list/',{
+    	templateUrl:'_blog/blogsforapproval.html',
+    	controller:'BlogDetailController'
+    })
+    .when('/getBlogDetail/:id',{
+    	templateUrl:'_blog/getblogdetail.html',
+    	controller:'BlogDetailController'
+    })
+    .when('/getAllUsers',{
+		templateUrl:'_friend/userslist.html',
+    	controller:'FriendController'
+    	
+    }).when('/pendingRequests',{
+		templateUrl:'_friend/pendingRequest.html',
+    	controller:'FriendController'
+    })
+    
+    .when('/listoffriends',{
+		templateUrl:'_friend/friendslist.html',
+		controller:'FriendController'
+	})
+    .when('/chat',{
+		templateUrl:'_chat/chat.html',
+		controller:'ChatCtrl'
+	})
+	
+	
 })
 app.run(function($rootScope,$cookieStore,UserService,$location){
 	console.log('entering run method ')
