@@ -1,4 +1,4 @@
-/*package com.niit.controller;
+package com.niit.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,16 +17,11 @@ import com.niit.model.Chat;
 @Controller
 public class SockController {
 	private static final Log logger = LogFactory.getLog(SockController.class);
-
-	
 	private final SimpMessagingTemplate messagingTemplate;
-		
 	private List<String> users = new ArrayList<String>();
 		
 	@Autowired
 	private UserDao userDao;
-
-		
 	@Autowired
 	public SockController( SimpMessagingTemplate messagingTemplate) {
 	this.messagingTemplate = messagingTemplate;
@@ -37,7 +32,6 @@ public class SockController {
 	@SubscribeMapping("/join")
 	public List<String> join() {
 	System.out.println("inside join method in sock controller");
-		
 	String username=null;
 			
 	//System.out.println(username);
@@ -78,7 +72,6 @@ public class SockController {
 	public void chatReveived(Chat chat) {
 	System.out.println("From value in chatreceived in chat object " + chat.getFrom());
 	System.out.println(chat.getFrom());
-			
 	if("all".equals(chat.getTo())) {
 				
 	System.out.println("IN CHAT REVEIVED " + chat.getMessage() + " " + chat.getFrom() + " to " + chat.getTo());
@@ -94,6 +87,3 @@ public class SockController {
 	}
 		
 }
-
-
-*/

@@ -26,6 +26,8 @@ public class User {
 	@Column(name="on_line")
 	private boolean online;
 	private String firstname;
+	private String lastname;
+
 	
 	public String getFirstname() {
 		return firstname;
@@ -34,8 +36,6 @@ public class User {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-
-	private String lastname;
 
 	
 

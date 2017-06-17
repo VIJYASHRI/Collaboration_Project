@@ -34,7 +34,7 @@ public class FileUploadController {
 			profilePicture.setUsername(user.getUsername());
 			profilePicture.setImage(image.getBytes());
 			profileuploadDao.save(profilePicture);
-			return new ResponseEntity<User>(user, HttpStatus.OK);
+			return new ResponseEntity<ProfilePicture>(profilePicture, HttpStatus.OK);
 		}
 	}
 

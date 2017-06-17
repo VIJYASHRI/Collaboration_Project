@@ -12,7 +12,7 @@
 <div class="modalContainer" 
   ng-style="{'background-image': 'url(' + selectedMeal.url + ')'}"> -->
 
-<body ng-app="app">
+<body ng-app="app" bgcolour="#16A085">
  
 	<header>
 		<nav class="navbar navbar-inverse">
@@ -50,7 +50,8 @@
 						<ul class="dropdown-menu">
 							<li><a href="#saveBlogPost" ng-show="currentUser.username">Add Blog Post </a></li>
 							<li><a href="#getBlogDetail" >Blog Detail</a></li>
-							<li><a href="#list" >Blog Pending</a></li>
+							<li><a href="#getAllBlogs" >Blog Pending</a></li>
+							
 							
 						</ul></li>
 
@@ -79,9 +80,9 @@
 							class="caret"></b>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="#/getAllUsers" ng-show="currentUser.username">All Users</a></li>
+							<li><a href="#getAllUsers" ng-show="currentUser.username">All Users</a></li>
 							<li><a href="#pendingRequests" ng-show="currentUser.username">Pending Requests</a></li>
-							<li><a href="#friendslist" ng-show="currentUser.username">My Friends</a></li>
+							<li><a href="#listoffriends" ng-show="currentUser.username">My Friends</a></li>
 						</ul></li>					
 					
 								
@@ -140,18 +141,15 @@
 
 <script type="text/javascript" src="_blog/blogdetailcontroller.js"></script>
 
-<script type="text/javascript" src="_home/homecontroller.js"></script>
-<script type="text/javascript" src="_home/homeservice.js"></script>
-
 
 <script src="js/sockjs/sockjs.js"></script>
 <script src="js/stomp/dist/stomp.js"></script>
 
 
-<script type="text/javascript" src="_chat/chatCtrl.js"></script>
+<script type="text/javascript" src="_chat/chatcontroller.js"></script>
 <script type="text/javascript" src="_chat/chatservice.js"></script>
 
 <script type="text/javascript" src="_friend/friendcontroller.js"></script>
 <script type="text/javascript" src="_friend/friendservice.js"></script>
-<script src="src/js/angular-background.js"></script>
+
 </html>

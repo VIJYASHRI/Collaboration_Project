@@ -42,14 +42,24 @@ public class BlogPostController {
 		}
 
 	}
-	@RequestMapping(method = RequestMethod.GET, value = "/list/{approved}")
-	public ResponseEntity<?> getAllBlogs(@PathVariable int approved,HttpSession session){
+	@RequestMapping(value = "/list/{approved}",method = RequestMethod.GET)
+	public ResponseEntity<?> getBlogList(@PathVariable int approved,HttpSession session){
 		User user=(User)session.getAttribute("user");
 		if(user==null){
 			Error error=new Error(1,"Unauthroized user");
 			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
 		}
-		List<BlogPost> blogPosts=blogDao.getBlogPosts(approved);
+		List<BlogPost> blogPosts = blogDao.getBlogPosts(approved);
+		return new ResponseEntity<List<BlogPost>>(blogPosts,HttpStatus.OK);
+	}
+	@RequestMapping(value = "/allBlogs",method = RequestMethod.GET)
+	public ResponseEntity<?> getAllBlogList(HttpSession session){
+		/*User user=(User)session.getAttribute("user");
+		if(user==null){
+			Error error=new Error(1,"Unauthroized user");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+		}*/
+		List<BlogPost> blogPosts = blogDao.getAllBlogPosts();
 		return new ResponseEntity<List<BlogPost>>(blogPosts,HttpStatus.OK);
 	}
 	
@@ -62,7 +72,7 @@ public class BlogPostController {
 			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
 		}
 		//select * from blogpost where id=33
-		BlogPost blogPost=blogDao.getBlogPostById(id);
+		BlogPost blogPost = blogDao.getBlogPostById(id);
 		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 	}
 	
@@ -76,7 +86,7 @@ public class BlogPostController {
 		blogComment.setCommentedBy(user);
 		blogComment.setCommentedOn(new Date());
 		blogDao.addBlogComment(blogComment);
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		return new ResponseEntity<BlogComment>(HttpStatus.OK);
 		
 	}
 
@@ -97,7 +107,17 @@ public class BlogPostController {
 			Error error=new Error(1,"Unauthroized user");
 			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
 		}
+		if(blogPost.isApproved())
+		{
+			blogPost.setStatus('A');
 		blogDao.update(blogPost);
+		}
+		else if(blogPost.isApproved())
+		{
+			blogPost.setStatus('D');
+			blogDao.update(blogPost);
+		}
+		
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 

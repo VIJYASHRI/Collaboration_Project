@@ -29,9 +29,9 @@ public class BlogDaoImpl implements BlogDao {
 		Session session=sessionFactory.openSession();
 		Query query=session.createQuery("from BlogPost where approved="+approved);
 		List<BlogPost> blogPosts=query.list();
+		session.flush();
 		session.close();
 		return blogPosts;
-
 
 	}
 
@@ -65,6 +65,16 @@ public class BlogDaoImpl implements BlogDao {
 		session.close();
 		
 		
+	}
+
+	@Override
+	public List<BlogPost> getAllBlogPosts() {
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("from BlogPost");
+		List<BlogPost> blogPosts=query.list();
+		session.flush();
+		session.close();
+		return blogPosts;
 	}
 
 }

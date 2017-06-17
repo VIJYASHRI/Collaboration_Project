@@ -4,45 +4,62 @@
 <meta charset="ISO-8859-1">
 <title>Blog</title>
 </head>
-<body ng-model="blogPost">
-<div class="row">
-<div>
+<body ng-app="" ng-init="blogPost">
+<div class="container">
 <div class="panel panel-default">
 <div class="panel-heading">
-<div>{{blogPost.title}}</div>
-<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span>
-<span><strong>On:</strong>{{blogPost.createdOn |date:'medium'}}</span>
-</div>
-		<div class="panel-body">
-		{{blogPost.body}}</div>
+<center><b>Add Comments</b></center>
 </div>
 </div>
-</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<span><strong>Title: </strong>{{blogPost.title}}</span><br>
+<span><strong>Created By:</strong>{{blogPost.createdBy.username}}</span><br>
+<span><strong>On:</strong>{{blogPost.createdOn |date:'medium'}}</span><br>
+		<div class="panel-body"><span><strong>Blog Contents: </strong>{{blogPost.body}}</span></div>
+
+<tr ng-repeat="p in postsForApproval">
+<span><strong>Select :</strong></span><br>
+<input type="radio" ng-click="updateblogstatus(p.status,'A')" ng-model="blogPost.approved" name="approved" value="true">Approve<br>
+<input type="radio" ng-click="updateblogstatus(p.status,'D')" ng-model="blogPost.approved" name="approved" value="false"> Reject<br>
+<a href="#getAllBlogs" ng-click="updateApproval()" class="btn btn-primary">Update</a>
+<a href="#blogsforapproval" class="btn btn-primary">Back</a><br>
+</tr>
+
+<!-- 
 <div ng-show="currentUser.role=='Admin'">
 <input type="radio" ng-model="blogPost.approved" value="true">Approve<br>
 <input type="radio" ng-model="blogPost.approved" value="false">Deny<br>
 <button type="submit" class="btn btn-success" ng-click="UpdateApproval()">Update</button><br>
 <a href="getAllBlogs">Back</a>
-</div>
-<div class=row >
-<a href="" ng-click="getBlogComments(blogPost.id)" class="btn btn-default">Show Comments</a>
+</div> 
+<a href="" ng-click="getBlogComments(blogPost.id)" class="btn btn-default">Show Comments</a>-->
+
+<button ng-click="getBlogComments(blogPost.id)" class="btn btn-info">Show Comments</button>
 <ul ng-show="showcomments">
 <li ng-repeat="comment in blogComments" style="list-style:none;">
-<div>
-{{comment.body}}
-<span><strong>Commented By:</strong>{{comment.commentedBy.username}}</span>
-<span><strong>On:</strong>{{comment.commentedOn |date:'medium'}}</span>
+<div class="panel panel-default">
+ <div class="panel-heading"><span><strong>Commented By:</strong>{{comment.commentedBy.username}}</span><br>
+<div class="panel-body">
+<span><strong>Comments: </strong>{{comment.body}}</div></span>
+<span><strong>Commented On: </strong>{{comment.commentedOn |date:'medium'}}</span>
+</div></div>
 </div>
 </li>
 </ul>
 </div>
-<div class="col-sm-3 col-md-3 col-lg-2">
+<div class="panel panel-default">
+ <div class="panel-heading"><td>Type Your Comment Here:</td><br></div>
+ <div class="panel-body">
 
 <form>
-<textarea ng-model="blogComent.body"></textarea>
+<textarea ng-model="blogComment.body"></textarea><br><br>
 <button ng-click="addBlogcomment()" class="btn btn-primary btn-block">Post Comment</button>
 
 </form>
 </div> 
+</div>
+</div>
+
 </body>
 </html>

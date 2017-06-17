@@ -18,7 +18,6 @@ app.config(function($routeProvider){
 	})
 	.when('/profilepic',{
 		templateUrl:'_user/profilepic.html',
-		controller:'FileUploadController'	
 	})
 	.when('/edituser',{
 		templateUrl:'_user/edituserform.html',
@@ -37,10 +36,10 @@ app.config(function($routeProvider){
     	controller:'BlogController'
     })
     .when('/getAllBlogs',{
-    	templateUrl:'_blog/getBlogTitles.html',
+    	templateUrl:'_blog/bloglist.html',
     	controller:'BlogController'
     })
-    .when('/list/:approved',{
+    .when('/list/',{
     	templateUrl:'_blog/blogsforapproval.html',
     	controller:'BlogDetailController'
     })

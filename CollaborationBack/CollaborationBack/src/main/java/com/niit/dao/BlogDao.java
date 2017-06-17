@@ -8,6 +8,7 @@ import com.niit.model.BlogPost;
 public interface BlogDao {
 	void saveBlogPost(BlogPost blogPost);
 	public List<BlogPost> getBlogPosts(int approved);
+	public List<BlogPost> getAllBlogPosts();
 	public BlogPost getBlogPostById(int id);
 	void addBlogComment(BlogComment blogComment);
 	List<BlogComment> getBlogComments (int blogPostId);

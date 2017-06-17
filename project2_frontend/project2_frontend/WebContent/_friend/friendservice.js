@@ -1,4 +1,4 @@
-app.factory('FriendService',function($http,FriendService){
+app.factory('FriendService',function($http){
 	var friendService={}
 	var BASE_URL="http://localhost:8080/CollaborationBack"
 		
@@ -12,8 +12,8 @@ app.factory('FriendService',function($http,FriendService){
 	friendService.pendingRequests=function(){
 		return $http.get(BASE_URL + "/pendingRequests")
 	}
-	friendService.updatependingRequests=function(from, status){
-		return $http.put(BASE_URL + "/updatependingRequests/"+from+"/"+status)
+	friendService.updatependingrequest=function(from, status){
+		return $http.put(BASE_URL + "/updatependingrequest/"+from+"/"+status)
 	}
 	friendService.getAllFriends=function(){
 		return $http.get(BASE_URL + "/friendslist")

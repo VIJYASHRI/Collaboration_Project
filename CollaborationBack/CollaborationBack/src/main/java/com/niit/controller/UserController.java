@@ -1,6 +1,7 @@
 package com.niit.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,8 +39,8 @@ public class UserController {
 		}
 
 	}
-	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public ResponseEntity<?> login(@RequestBody User user,HttpSession session){
+	@RequestMapping(value="/login",method=RequestMethod.POST , produces= "application/json" )
+	public ResponseEntity<?> login(@RequestBody @Valid User user,HttpSession session){
 		
 		User validUser=userDao.login(user);
 		if(validUser==null){                        

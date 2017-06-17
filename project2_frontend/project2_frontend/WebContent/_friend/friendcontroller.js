@@ -34,10 +34,10 @@ app.controller('FriendController',function($scope,$location,FriendService){
 	$scope.friendslist=FriendService.getAllFriends()
 	.then(function(response){
 		$scope.friendslist=response.data
+		console.log(response.data)
 	},function(response){
 		console.log(response.status)
 	})
-	
 	
 	function getAllUsers(){
 		$scope.usersList=FriendService.getAllUsers()
@@ -47,7 +47,7 @@ app.controller('FriendController',function($scope,$location,FriendService){
 		},function(response){
 			console.log(response.status)
 		})
-	}
 	
+	}
 	getAllUsers();
 })

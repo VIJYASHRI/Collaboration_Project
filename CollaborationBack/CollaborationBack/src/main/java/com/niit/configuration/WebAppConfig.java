@@ -19,6 +19,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = { "com.niit" })
 public class WebAppConfig extends WebMvcConfigurerAdapter {
 	@Override
+	
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -27,6 +28,12 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
 		viewResolver.setSuffix(".jsp");
 		registry.viewResolver(viewResolver);
 	}
+	/*@Bean
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**")
+		.addResourceLocations("WEB-INF/resources/");
+		}
+	*/
 	@Bean(name="multipartResolver")
 	public CommonsMultipartResolver getResolver() throws IOException{
 		CommonsMultipartResolver resolver= new CommonsMultipartResolver();

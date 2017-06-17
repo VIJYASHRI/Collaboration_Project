@@ -4,9 +4,21 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-<ul ng-repeat="friend in friendslist"></ul>
-<li>friend.from</li>
-<li>friend.to</li>
+<body ng-app="myApp">
+<div class="panel panel-default" >
+<div class="panel-heading">
+<span><strong>Friends</strong></span>
+</div>
+<div class="panel-body">
+ <ul ng-repeat="friend in friendslist">
+ <li ng-hide="friend.from==currentUser.username">{{friend.from}}</li>
+ <li ng-hide="friend.to==currentUser.username">{{friend.to}}</li>
+    </ul></div>
+<!-- <ul ng-repeat="friend in friendslist">
+<li ng-hide="friend.from==currentUser.username">{{friend.from}}</li>
+<li ng-hide="friend.to==currentUser.username">{{friend.to}}</li>
+</ul> -->
+
+</div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/*package com.niit.configuration;
+package com.niit.configuration;
 
 import java.util.List;
 
@@ -20,62 +20,42 @@ import org.springframework.web.socket.config.annotation.WebSocketTransportRegist
 @EnableScheduling
 @ComponentScan(basePackages="com.niit")
 public class WebSocketconfiguration implements WebSocketMessageBrokerConfigurer {
-
-
-	
-	
+	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 		System.out.println("REGISTER STOME ENDPOINTS...");
 		registry.addEndpoint("/portfolio").withSockJS();
 	}
-
-	
 	public void configureMessageBroker(MessageBrokerRegistry  configurer) {
 		System.out.println("CONFIGURE MESSAGE BROKER REGISTRY");
 		configurer.enableSimpleBroker("/queue/", "/topic/");
 		configurer.setApplicationDestinationPrefixes("/app");
 	}
-
-	
 	public void configureClientInboundChannel(ChannelRegistration registration) {
-		
+		System.out.println("register sockt");
 	}
 
-	
 	public void configureClientOutboundChannel(ChannelRegistration registration) {
-		
+		System.out.println("register outbound");
 	}
 
-
-	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> arg0) {
-		// TODO Auto-generated method stub
-		
+	
 	}
 
-
-	@Override
 	public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
-
-	@Override
 	public boolean configureMessageConverters(List<MessageConverter> arg0) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return true;
 	}
 
-
-	@Override
 	public void configureWebSocketTransport(WebSocketTransportRegistration arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 
 }
 
-
-*/

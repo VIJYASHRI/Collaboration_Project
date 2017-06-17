@@ -17,23 +17,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="blogpost_collaboration")
+@Table
+@Component
 public class BlogPost {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	private Date createdOn;
-	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-	@JoinColumn(name="created_by_id")
+	@ManyToOne
+	@JoinColumn(name="created_by_id" , referencedColumnName="id")
 	private User createdBy;
 	private String title;
 	@Lob
 	@Column(name="blog_body")
 	private String body;
+	private char status;
 	private boolean approved;
 	@OneToMany(mappedBy="blogPost",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JsonIgnore
@@ -80,6 +84,12 @@ public class BlogPost {
 	}
 	public void setBody(String body) {
 		this.body = body;
+	}
+	public char getStatus() {
+		return status;
+	}
+	public void setStatus(char status) {
+		this.status = status;
 	}
 	
 	
