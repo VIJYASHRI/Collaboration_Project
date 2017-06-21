@@ -39,7 +39,7 @@ public class BlogPost {
 	private String body;
 	private char status;
 	private boolean approved;
-	@OneToMany(mappedBy="blogPost",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="blogPost")
 	@JsonIgnore
 	private List<BlogComment> blogComments=new ArrayList<BlogComment>();
 
